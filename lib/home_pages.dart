@@ -4,6 +4,8 @@ import 'package:flutter_universe/constants.dart';
 import 'package:flutter_universe/data.dart';
 import 'package:flutter_universe/details_page.dart';
 
+import 'components/bottom_app_bar.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -69,11 +71,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                height: 500,
+                height: MediaQuery.of(context).size.height *0.6,
                 padding: const EdgeInsets.only(left: 32),
                 child: Swiper(
                   itemCount: planets.length,
-                  itemWidth: MediaQuery.of(context).size.width - 2 * 64,
+                  itemWidth: MediaQuery.of(context).size.width * 0.70,
                   layout: SwiperLayout.STACK,
                   pagination: const SwiperPagination(
                     builder:
@@ -172,25 +174,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(36.0),
-            ),
-            color: navigationColor),
-        padding: const EdgeInsets.all(24),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-                onPressed: () {}, icon: Image.asset('assets/menu_icon.png')),
-            IconButton(
-                onPressed: () {}, icon: Image.asset('assets/search_icon.png')),
-            IconButton(
-                onPressed: () {}, icon: Image.asset('assets/profile_icon.png')),
-          ],
-        ),
-      ),
+      bottomNavigationBar: const BottomNavBarApp(),
     );
   }
 }
